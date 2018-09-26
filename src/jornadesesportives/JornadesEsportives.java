@@ -1,7 +1,12 @@
 package jornadesesportives;
 
+import entities.Alumno;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
@@ -10,7 +15,7 @@ import java.util.Map;
 public class JornadesEsportives {
 
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    public Map<Integer, String> alumnos = new HashMap<Integer, String>();
+    public Map<String, Alumno> alumnos = new HashMap<String, Alumno>();
     
     public static void main(String[] args) throws IOException {
         
@@ -19,6 +24,16 @@ public class JornadesEsportives {
         do{
             showMenu(decision);
             decision = Integer.parseInt(br.readLine());
+            
+            switch(decision){
+                case 1:
+                    addAlumnoaArchivo();
+                    break;
+                default:
+                    break;
+                 
+            }
+                    
         }
         while(decision > 0 && decision <= 6);
         
@@ -50,28 +65,44 @@ public class JornadesEsportives {
         String nombre = br.readLine();
         System.out.println("Apellido alumno : ");
         String apellido = br.readLine();
+        System.out.println("Curso alumno : ");
+        String curso = br.readLine();
+        System.out.println("Edad alumno : ");
+        int edad = Integer.parseInt(br.readLine());
+        System.out.println("Sexo alumno : ");
+        String sexo = br.readLine();
+        System.out.println("Deporte alumno : ");
+        String deporte = br.readLine();
         
-        
+        Alumno alu = new Alumno(nombre, apellido, curso, sexo, edad, deporte);
+
         String rutaActual = System.getProperty("user.dir");
         String separador = File.separator;
-        String rutaFichero = rutaActual + separador + "datos.txt";
+        String rutaFichero = rutaActual + separador + "alumnos.txt";
         File f = new File(rutaFichero);
-        if (f.exists()) {
-            System.out.println("El fichero existe.");
-            System.out.println("Nombre del fichero:" + f.getName());
-        }
+        FileWriter fw = new FileWriter(f, true);
+        BufferedWriter bw = new BufferedWriter(fw);
+        
+        bw.append(nombre + "," + apellido + "," + curso + "," + sexo + "," + edad + "," + deporte);
+        
+        bw.newLine();
+        bw.close();
         
     }
     
-    public static void cargarAlumnosaHashMap(){
+    public static void cargarAlumnosaHashMap() throws FileNotFoundException{
         
         String rutaActual = System.getProperty("user.dir");
         String separador = File.separator;
         String rutaFichero = rutaActual + separador + "datos.txt";
         File f = new File(rutaFichero);
+        FileReader fr = new FileReader(f);
         if (f.exists()) {
             System.out.println("El fichero existe.");
             System.out.println("Nombre del fichero:" + f.getName());
+            
+            
         }
+        
     }
 }

@@ -1,0 +1,1 @@
+(nombre:Alfred,apellido:Perez,curso:daw2m,sexo:m,edad:18,deporte:Futbol)
