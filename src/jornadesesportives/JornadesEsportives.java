@@ -27,7 +27,12 @@ public class JornadesEsportives {
             
             switch(decision){
                 case 1:
+                    System.out.println("1-. Inscribir alumno");
                     addAlumnoaArchivo();
+                    break;
+                case 2:
+                    System.out.println("2-. Alumnos por curso");
+                    cargarAlumnosaHashMap();
                     break;
                 default:
                     break;
@@ -90,18 +95,22 @@ public class JornadesEsportives {
         
     }
     
-    public static void cargarAlumnosaHashMap() throws FileNotFoundException{
+    public static void cargarAlumnosaHashMap() throws FileNotFoundException, IOException{
         
         String rutaActual = System.getProperty("user.dir");
         String separador = File.separator;
         String rutaFichero = rutaActual + separador + "datos.txt";
         File f = new File(rutaFichero);
         FileReader fr = new FileReader(f);
+        BufferedReader brr = new BufferedReader(fr);
         if (f.exists()) {
             System.out.println("El fichero existe.");
             System.out.println("Nombre del fichero:" + f.getName());
             
-            
+            String linea;
+            while((linea = brr.readLine()) != null){
+                System.out.println("Linea = " + linea);
+            }
         }
         
     }
