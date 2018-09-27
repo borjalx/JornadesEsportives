@@ -68,6 +68,11 @@ public class Alumno {
     public void setDeporte(String deporte) {
         this.deporte = deporte;
     }
+
+    @Override
+    public String toString() {
+        return "Alumno -> " + "nombre =" + nombre + ", apellido =" + apellido + ", curso =" + curso + ", sexo =" + sexo + ", edad =" + edad + ", deporte =" + deporte + '/';
+    }
     
     
     

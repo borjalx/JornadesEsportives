@@ -1,1 +1,4 @@
-(nombre:Alfred,apellido:Perez,curso:daw2m,sexo:m,edad:18,deporte:Futbol)
+Ramon,Diaz,DAW2M,M,19,Tennis
+juan,antonio,simix,f,34,voley
+sara,ramirez,simix,f,23,tennis
+anto,nella,daw2m,f,33,futbol
